@@ -1,0 +1,13 @@
+{
+    "Experiment": {
+        "path": "../data/archive",
+        "save_path": "../results",
+        "seed": 21
+    },
+    "Model": {
+        "name": "lda",
+        "args": {
+            "k": 10
+        }
+    }
+}
