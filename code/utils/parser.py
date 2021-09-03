@@ -11,4 +11,4 @@ class Parser():
         return self._config_args["Model"]
 
     def parse(self):
-        self.experiment_args, self.model_args
+        return self.experiment_args, self.model_args

@@ -2,8 +2,14 @@ import pandas as pd
 import numpy as np
 import random
 import gensim
+import argparse
+import json
 from ast import literal_eval
+import os
+
 from models import LDAModel
+from reports import ReportManager
+from utils import Parser
 
 MODELS = {
     "lda": LDAModel
@@ -36,6 +42,12 @@ if __name__ == "__main__":
     # Unpack the arguments
     exp_args, model_args = parser.parse()
 
+    # Create a report.
+    report = ReportManager(exp_args["save_path"])
+    # Add configuration to report.
+    report.add_section(section="config", config_file=config)
+    report.save()
+
     # Update the random seeds for reproducible results.
     if exp_args["seed"]:
         # torch.random.manual_seed(exp_args["seed"])
@@ -63,5 +75,9 @@ if __name__ == "__main__":
         embeddings[i, :] = doc.get_topic_dist()
 
     embeddings_series = pd.Series(embeddings.tolist(), index=raw_recipes.id)
+
+    # Add topics to report.
+    report.add_section(section="topics", model=model)
+    report.save()
 
 

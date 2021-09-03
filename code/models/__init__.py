@@ -1,1 +1,1 @@
-from LDA import LDAModel
+from .LDA import LDAModel

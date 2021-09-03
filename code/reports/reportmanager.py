@@ -6,7 +6,8 @@ import os
 from datetime import datetime
 
 SECTIONS = {
-    "config": ReportConfig
+    "config": ReportConfig,
+    "topics": ReportTopics
 }
 
 class ReportManager():
@@ -27,7 +28,6 @@ class ReportManager():
         else:
             shutil.rmtree(self._path)
             os.mkdir(self._path, mode=0o777)
-
 
     def add_section(self, section, **kwargs):
         new_section = SECTIONS[section.lower()](path=self._path, **kwargs)
