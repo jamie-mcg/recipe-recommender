@@ -9,7 +9,7 @@ import os
 
 from models import LDAModel
 from reports import ReportManager
-from utils import Parser
+from utils import Parser, Recommender
 
 MODELS = {
     "lda": LDAModel
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     # Parse the arguments
     parser = Parser(config)
     # Unpack the arguments
-    exp_args, model_args = parser.parse()
+    exp_args, model_args, recommendation_args = parser.parse()
 
     # Create a report.
     report = ReportManager(exp_args["save_path"])
@@ -78,6 +78,15 @@ if __name__ == "__main__":
 
     # Add topics to report.
     report.add_section(section="topics", model=model)
+    report.save()
+
+    interactions_train = pd.read_csv(os.path.join(exp_args["path"], "interactions_train.csv"))
+
+    recommender = Recommender(interactions_train, embeddings_series, **recommendation_args["args"])
+    last_meal, recommendation_ids = recommender.get_recommendations()
+
+    report.add_section(section="recommendations", data=raw_recipes, last_recipe=last_meal, \
+                    recommendations=recommendation_ids, user_id=recommendation_args["args"]["user_id"])
     report.save()
 
 

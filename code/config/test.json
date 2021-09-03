@@ -9,5 +9,12 @@
         "args": {
             "k": 10
         }
+    },
+    "Recommendations": {
+        "args": {
+            "user_id": 2046,
+            "num_recommendations": 5,
+            "metric": "cosine"
+        }
     }
 }

@@ -45,3 +45,30 @@ class ReportTopics(ReportSection):
                 string += f"{topic}, "
             string += '\n'
         return string
+
+
+class ReportRecommendations(ReportSection):
+    def __init__(self, path, data, last_recipe, recommendations, user_id):
+        self._header = "Recommendations"
+        self._data = data
+        self._last_recipe = last_recipe
+        self._recommendations = recommendations
+        self._user_id = user_id
+        self._path = path
+
+    @property
+    def body(self):
+        string = ""
+        string += f"## Last Recipe Cooked by User {self._user_id}: \n"
+        string += self._data[self._data.id == self._last_recipe]["name"].values[0]
+        string += "\n"
+        string += self._data[self._data.id == self._last_recipe]["ingredients"].values[0]
+        string += "\n\n"
+        string += "## Recommendations Based on this are:"
+        for rec_id in self._recommendations:
+            string += "\n"
+            string += self._data[self._data.id == rec_id]["name"].values[0]
+            string += "\n"
+            string += self._data[self._data.id == rec_id]["ingredients"].values[0]
+            string += "\n"
+        return string

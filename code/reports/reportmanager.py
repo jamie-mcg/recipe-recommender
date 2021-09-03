@@ -7,7 +7,8 @@ from datetime import datetime
 
 SECTIONS = {
     "config": ReportConfig,
-    "topics": ReportTopics
+    "topics": ReportTopics,
+    "recommendations": ReportRecommendations
 }
 
 class ReportManager():

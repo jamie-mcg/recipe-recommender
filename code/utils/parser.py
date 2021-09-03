@@ -10,5 +10,9 @@ class Parser():
     def model_args(self):
         return self._config_args["Model"]
 
+    @property
+    def recommendation_args(self):
+        return self._config_args["Recommendations"]
+
     def parse(self):
-        return self.experiment_args, self.model_args
+        return self.experiment_args, self.model_args, self.recommendation_args
