@@ -18,7 +18,7 @@ Feel free to fork this repo and make it your own!
 
 ## Data
 
-The data can be downloaded from Kaggle and is the Food.com dataset [here](https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions). Just put all the files into a folder named `data' in the home directory of the repo.
+The data can be downloaded from Kaggle and is the Food.com dataset [here](https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions). Just put the zip file into a folder named `data' in the home directory of the repo. Then unzip the file, so you should have /data/archive/*.csv. If it doesn't work then either let me know or it should be pretty simple to debug!
 
 ## Recommendations
 
