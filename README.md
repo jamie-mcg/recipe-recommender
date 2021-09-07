@@ -16,6 +16,10 @@ This is a fun repo to give a very simple introduction to recommendation systems 
 
 Feel free to fork this repo and make it your own!
 
+## Data
+
+The data can be downloaded from Kaggle and is the Food.com dataset [here](https://www.kaggle.com/shuyangli94/food-com-recipes-and-user-interactions). Just put all the files into a folder named `data' in the home directory of the repo.
+
 ## Recommendations
 
 An example of a recommendation result is below:
